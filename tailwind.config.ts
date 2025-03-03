@@ -9,11 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        space: '#080A1A',
+        primary: '#EAEFF7',
+        secondary: '#A0AEC0',
+        'btn-primary': '#0d00ff',
+        'btn-secondary': '#7b00ff',
+        glow: '#7b00ff',
+
       },
     },
   },
-  plugins: [],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require('tailwindcss-animate')],
 };
 export default config;
