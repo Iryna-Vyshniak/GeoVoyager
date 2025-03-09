@@ -12,7 +12,7 @@ import { lon2xyz } from '@/lib/utils';
 import { SelectedPlaceMarkerProps } from '@/shared/shared.types';
 
 const SelectedPlaceMarker = forwardRef<Group, SelectedPlaceMarkerProps>(
-  ({ selectedPlace, isVisible, setOccluded }, ref) => {
+  ({ selectedPlace, isVisible, setOccluded, planetRef }, ref) => {
     const markerRef = ref as React.MutableRefObject<Group | null>;
     const htmlGroupRef = useRef<Group>(null);
 
@@ -74,7 +74,7 @@ const SelectedPlaceMarker = forwardRef<Group, SelectedPlaceMarkerProps>(
           <Html
             as='div'
             center
-            occlude='raycast'
+            occlude={[planetRef]}
             onOcclude={(occluded: boolean) => setOccluded(occluded)}
             style={{
               position: 'relative',
