@@ -216,7 +216,6 @@ const Earth = ({ selectedPlace }: EarthProps) => {
         {selectedPlace && (
           <SelectedPlaceMarker
             ref={markerRef}
-            planetRef={earthMeshRef}
             selectedPlace={selectedPlace}
             isVisible={isMarkerVisible}
             setOccluded={setOccluded}

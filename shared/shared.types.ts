@@ -22,6 +22,4 @@ export type SelectedPlaceMarkerProps = {
     selectedPlace: Place;
     isVisible: boolean;
     setOccluded: (occluded: boolean) => void;
-    planetRef: React.RefObject<Mesh>;
-
 }
