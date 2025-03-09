@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #0a0a0a;
   --foreground: #ededed;
 }
 
@@ -19,7 +19,6 @@ body,
   min-height: 100vh;
   color: var(--foreground);
   background: url('/assets/images/space-stars.jpg') repeat top center / contain, var(--background);
-  color: #7b00ff;
 }
 
 @layer utilities {
@@ -47,7 +46,21 @@ body,
   }
 
   .modal-content {
-    -webkit-mask-image: linear-gradient(to top, transparent, black 40%);
-    mask-image: linear-gradient(to top, transparent, black 40%);
+    min-height: 100vh;
+    --bg: var(--background);
+    mask-image: linear-gradient(to right, transparent, var(--bg) 40%);
+
+    -webkit-mask-image: linear-gradient(to right, transparent, var(--bg) 40%);
+  }
+
+  progress::-webkit-progress-bar {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 9999px;
+  }
+
+  progress::-webkit-progress-value,
+  progress::-moz-progress-bar {
+    background-color: #0408ff;
+    border-radius: 9999px;
   }
 }
