@@ -13,12 +13,18 @@
     --foreground: #ededed;
   }
 }
+html {
+  min-height: 100dvh;
+}
 
-body,
-.modal {
+body {
+  position: relative;
   min-height: 100vh;
+  height: 100%;
+  width: 100%;
   color: var(--foreground);
   background: url('/assets/images/space-stars.jpg') repeat top center / contain, var(--background);
+  overflow: hidden;
 }
 
 @layer utilities {
