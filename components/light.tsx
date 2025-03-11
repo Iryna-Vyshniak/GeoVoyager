@@ -23,11 +23,18 @@ function Light() {
   return (
     <group ref={ref}>
       <directionalLight
-        position={[5, 5, -8]} // Позиція джерела світла
-        castShadow // Увімкнення тіней
-        intensity={5} // Інтенсивність світла
-        shadow-mapSize={2048} // Роздільна здатність карти тіней (чим більше, тим якісніші тіні)
-        shadow-bias={-0.001} // Маленька зміна для виправлення артефактів тіней (shadow acne)
+        intensity={5}
+        position={[5, 5, -8]}
+        castShadow
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
+        shadow-camera-left={-2}
+        shadow-camera-right={2}
+        shadow-camera-top={-2}
+        shadow-camera-bottom={2}
+        shadow-camera-near={0.1}
+        shadow-camera-far={7}
+        shadow-bias={-0.001}
       >
         <orthographicCamera attach='shadow-camera' args={[-8.5, 8.5, 8.5, -8.5, 0.1, 20]} />
       </directionalLight>
