@@ -2,7 +2,7 @@
 
 import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 import { Billboard, Text3D, useGLTF } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { ThreeEvent, useFrame } from '@react-three/fiber';
 import { animated, useSpring } from '@react-spring/three';
 
 import { BufferGeometry, Group, Mesh, MeshPhysicalMaterial, MeshStandardMaterial } from 'three';
@@ -43,7 +43,7 @@ const SelectedPlaceMarker = forwardRef<Group, SelectedPlaceMarkerProps>(
      
     })
 
-    const over = (e) => {
+    const over = ( e: ThreeEvent<PointerEvent>) => {
       e.stopPropagation();
       setHovered(true);
     };
