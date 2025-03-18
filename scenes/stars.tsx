@@ -1,18 +1,18 @@
 'use client';
 
 import * as THREE from 'three';
-
 import { useLoader } from '@react-three/fiber';
 
 const Stars = () => {
-  const texture = useLoader(THREE.TextureLoader, '/assets/textures/stars.jpg');
-  texture.anisotropy = 16;
-  texture.colorSpace = THREE.SRGBColorSpace;
+  const gaiaTexture = useLoader(THREE.TextureLoader, '/assets/textures/space-gaia.png');
+  gaiaTexture.anisotropy = 16;
+  gaiaTexture.colorSpace = THREE.SRGBColorSpace;
+  gaiaTexture.mapping = THREE.EquirectangularReflectionMapping
 
   return (
     <mesh>
-      <sphereGeometry args={[5, 64, 64]} />
-      <meshBasicMaterial map={texture} side={THREE.BackSide} />
+      <sphereGeometry args={[5, 128, 128]} />
+      <meshBasicMaterial map={gaiaTexture} side={THREE.BackSide} />
     </mesh>
   );
 };
