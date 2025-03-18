@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { Vector3 } from 'three';
+import * as THREE from 'three';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -17,3 +18,9 @@ export const lon2xyz = (lat: number, lon: number, radius: number = 1): Vector3 =
     );
 };
 
+  export const params = {
+    // general scene params
+    sunIntensity: 30, // brightness of the sun
+    speedFactor: 2.0, // rotation speed of the earth
+    metalness: 0.1,
+  }
