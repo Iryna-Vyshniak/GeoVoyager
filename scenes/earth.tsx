@@ -7,7 +7,6 @@ import { CameraControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 import Moon from './moon';
-import Light from '@/components/light';
 import TouristMarker from '@/components/tourist-marker';
 import SelectedPlaceMarker from '@/components/selected-place-marker';
 
@@ -181,13 +180,13 @@ const Earth = ({ selectedPlace }: EarthProps) => {
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
         >
-          <sphereGeometry args={[1, 64, 64]} />
+          <sphereGeometry args={[1, 128, 128]} />
           <meshPhongMaterial
             map={baseTexture}
             normalMap={normalMap}
             shininess={100}
             displacementMap={displacementMap}
-            displacementScale={0.2}
+            displacementScale={0.03}
             specularMap={specularMap}
             emissiveMap={nightTexture}
             emissive={0xffffff}
@@ -202,7 +201,7 @@ const Earth = ({ selectedPlace }: EarthProps) => {
         </mesh>
 
         {TOURIST_DATA.map((place, index) => {
-          const { x, y, z } = lon2xyz(...place.coordinates);
+          const { x, y, z } = lon2xyz(...place.coordinates, 1);
           return (
             <TouristMarker
               key={index}
@@ -218,7 +217,6 @@ const Earth = ({ selectedPlace }: EarthProps) => {
             ref={markerRef}
             selectedPlace={selectedPlace}
             isVisible={isMarkerVisible}
-            setOccluded={setOccluded}
           />
         )}
 
@@ -234,8 +232,7 @@ const Earth = ({ selectedPlace }: EarthProps) => {
         maxPolarAngle={Math.PI / 2}
         smoothTime={0.4}
       />
-      <ambientLight intensity={0.4} />
-      <Light />
+      <ambientLight intensity={0.5} />
     </>
   );
 };

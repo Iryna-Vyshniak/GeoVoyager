@@ -13,15 +13,15 @@ export type EarthProps = {
 }
 
 export type TouristMarkerProps = {
-    position: readonly [number, number, number]; // Ensures position is a 3D vector
+    position:  [number, number, number]; // Ensures position is a 3D vector
     place: Place;
     planetRef: React.RefObject<Mesh>;
 }
 
+
 export type SelectedPlaceMarkerProps = {
     selectedPlace: Place;
     isVisible: boolean;
-    setOccluded: (occluded: boolean) => void;
 }
 
 export type City = {
@@ -96,3 +96,8 @@ export type City = {
     id: number;
 };
 
+export type CityProps = {
+    position: [number, number, number]; // Ensures position is a 3D vector
+    city: City;
+    planetRef: React.RefObject<Mesh>;
+}
