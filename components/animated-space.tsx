@@ -1,37 +1,53 @@
 'use client';
 
-import React from 'react';
-import { OrbitControls } from '@react-three/drei';
+import React, { ReactNode, Suspense } from 'react';
+import { Html, OrbitControls, Preload } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 
-import AnimatedStars from './animated-stars';
-
-const AnimatedSpace = () => {
+const AnimatedSpace = ({ children }: { children: ReactNode }) => {
   return (
-    <div className='absolute inset-0 w-screen h-screen -z-10'>
-      <Canvas
-        shadows
-        camera={{ position: [0, 0, 0], fov: 75 }}
-        dpr={[1, 1.5]} // Оптимізація для мобільних
-        gl={{
-          powerPreference: 'high-performance',
-          antialias: false,
-          preserveDrawingBuffer: true, // Запобігає очищенню WebGL-контексту
-        }}
-        className='fixed inset-0 w-full h-full event-pointer-none remove-scrollbar'
+    <Canvas
+      shadows
+      camera={{
+        fov: 45,
+        near: 0.55,
+        far: 100,
+        position: [0, -1, 5],
+      }}
+      dpr={[1, 2]}
+      gl={{
+        antialias: false,
+        preserveDrawingBuffer: true,
+        alpha: true,
+      }}
+      fallback={<p className='text-primary text-center text-balance'>Sorry no WebGL supported!</p>}
+      className='fixed inset-0 w-screen h-screen remove-scrollbar -z-20 overflow-hidden pointer-events-auto'
+    >
+      <Suspense
+        fallback={
+          <Html>
+            <p className='text-center'>Loading...</p>
+          </Html>
+        }
       >
-        {' '}
-        <AnimatedStars />
+        {children}
+
+        <ambientLight intensity={0.5} />
+
         <OrbitControls
+          enablePan
+          enableZoom
+          enableRotate
+          minDistance={1}
+          maxDistance={10}
           autoRotate
-          autoRotateSpeed={1}
-          enablePan={true}
-          enableZoom={false}
-          minPolarAngle={0}
-          maxPolarAngle={Math.PI}
+          autoRotateSpeed={0.25}
+          minPolarAngle={Math.PI / 4}
+          maxPolarAngle={Math.PI / 1.5}
         />
-      </Canvas>
-    </div>
+        <Preload all />
+      </Suspense>
+    </Canvas>
   );
 };
 
