@@ -1,11 +1,11 @@
-import { useSpring } from '@react-spring/three';
-import { Uint16BufferAttribute, MeshStandardMaterial, Bone, BoxGeometry, CanvasTexture, Float32BufferAttribute, RepeatWrapping, Skeleton, SkinnedMesh, SRGBColorSpace, Vector3, Texture, Color } from 'three';
+
+import { Uint16BufferAttribute, MeshStandardMaterial, BoxGeometry, CanvasTexture, Float32BufferAttribute, RepeatWrapping, SRGBColorSpace, Vector3, Texture, Color } from 'three';
 import html2canvas from 'html2canvas';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 
-import { SetupProps, SetupResult, TextureResult } from '@/shared/shared.types';
+import { TextureResult } from '@/shared/shared.types';
 
 import { PAGE_WIDTH, PAGE_HEIGHT, PAGE_DEPTH, PAGE_SEGMENTS, SEGMENT_WIDTH } from './constants';
 
